@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PerúIA | Descubriendo el Perú, Física y Matemáticas</title>
+<!-- Librería oficial optimizada para generar códigos QR locales sin errores -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{
+ --navy:#102c42;--navy2:#174660;--red:#e63946;--coral:#ff6b6b;--cream:#fffaf2;
+ --ink:#183247;--muted:#65798a;--line:#e8e3db;--green:#2b8658;--gold:#f5bd4f;
+ --shadow:0 14px 38px rgba(16,44,66,.10)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);
+ background:radial-gradient(ellipse at 10% 10%,#fff0dc 0,transparent 34%),radial-gradient(ellipse at 92% 38%,#e9f4f5 0,transparent 28%),var(--cream)}
+header{background:rgba(16,44,66,.96);backdrop-filter:blur(14px);color:white;padding:13px max(18px,calc((100% - 1160px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:10;box-shadow:0 5px 24px #102c4230;border-bottom:1px solid #ffffff18}
+.brand{font-size:1.35rem;font-weight:900;letter-spacing:-.04em;white-space:nowrap}.brand span{color:#ff6671}.brand small{display:block;font-size:.67rem;font-weight:500;letter-spacing:0;color:#d4e5ed;margin-top:4px}
+nav{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}nav button{border:1px solid transparent;color:#e5eef3;background:transparent;padding:10px 13px;border-radius:999px;cursor:pointer;font-weight:750;transition:.2s}nav button:hover{background:#ffffff14;border-color:#ffffff25}nav button.active{background:linear-gradient(135deg,var(--red),#ff5967);color:white;box-shadow:0 5px 14px #e6394640}
+main{max-width:1160px;margin:auto;padding:28px 20px 58px}
+.hero{min-height:420px;border-radius:30px;overflow:hidden;position:relative;background:linear-gradient(90deg,#09263bed 0%,#09263bbd 48%,#09263b08 100%),url('https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1700&q=90') center/cover;color:white;display:flex;align-items:center;padding:clamp(25px,5vw,66px);box-shadow:0 22px 48px #15344a2b;isolation:isolate}
+.hero:after{content:"";position:absolute;z-index:-1;width:260px;height:260px;border:1px solid #ffffff35;border-radius:50%;right:8%;bottom:-100px;box-shadow:0 0 0 24px #ffffff0b,0 0 0 50px #ffffff08}
+.hero-copy{max-width:590px;animation:rise .7s ease both}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:900;color:#ffd166;display:inline-flex;align-items:center;gap:8px}.eyebrow:before{content:"";width:24px;height:2px;background:currentColor}
+.hero h1{font-size:clamp(2.5rem,5.5vw,4.7rem);letter-spacing:-.055em;line-height:.99;margin:16px 0}.hero p{font-size:1.08rem;line-height:1.7;max-width:510px;color:#edf5f8;margin-bottom:25px}
+.primary,.secondary{border:0;border-radius:999px;padding:13px 20px;font-weight:850;cursor:pointer;transition:transform .18s,box-shadow .18s}.primary{background:linear-gradient(135deg,var(--red),#ff5967);color:white;box-shadow:0 8px 18px #e6394638}.primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px #e6394648}.secondary{background:#e8f0f5;color:var(--navy)}.secondary:hover{background:#dbe8ef}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:38px 0 18px}.section-head h2{margin:0;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.035em}.section-head p{margin:7px 0 0;color:var(--muted);line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:15px}
+.module{position:relative;overflow:hidden;border:1px solid #e9e3d9;border-radius:21px;padding:0 0 17px;background:#fff;text-align:left;cursor:pointer;box-shadow:0 5px 16px #15344a09;transition:transform .22s,box-shadow .22s,border-color .22s;min-height:290px;display:flex;flex-direction:column}
+.module:after{content:"";position:absolute;width:90px;height:90px;right:-42px;top:85px;border-radius:50%;background:#ffffff28;pointer-events:none}.module .module-photo{height:135px;width:100%;object-fit:cover;display:block;background:#e7edf0}.module .module-body{padding:14px 16px 0;display:flex;flex-direction:column;align-items:flex-start;flex:1}.module .emoji{font-size:1.25rem;display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#f5f7f8;box-shadow:inset 0 0 0 1px #ffffffa8}.module h3{margin:10px 0 6px;font-size:1.04rem;letter-spacing:-.02em}.module p{margin:0;color:#536a7a;font-size:.88rem;line-height:1.5}.module .arrow{margin-top:auto;margin-top:13px}
+.module:hover{transform:translateY(-5px);box-shadow:0 16px 30px #15344a17;border-color:#d4dfe4}
+.module .emoji{font-size:2.15rem;display:inline-grid;place-items:center;width:57px;height:57px;border-radius:17px;background:#ffffff9c;box-shadow:inset 0 0 0 1px #ffffffa8}
+.module h3{margin:14px 0 7px;font-size:1.04rem;letter-spacing:-.02em}.module p{margin:0;color:#536a7a;font-size:.88rem;line-height:1.5}.arrow{display:inline-flex;align-items:center;gap:5px;margin-top:15px;background:#ffffffc9;color:#c52e3a;padding:7px 11px;border-radius:20px;font-weight:850;font-size:.82rem}
+.panel{background:#ffffffeb;border:1px solid #e8e3db;border-radius:23px;padding:clamp(19px,3vw,32px);box-shadow:var(--shadow);backdrop-filter:blur(6px)}
+.hidden{display:none!important}.crumb{border:0;background:#ffffffa8;color:var(--muted);cursor:pointer;font-weight:800;padding:10px 14px;border-radius:999px;margin:0 0 18px}.crumb:hover{background:white;color:var(--navy)}
+.lesson-layout{display:grid;grid-template-columns:225px 1fr;gap:25px}.side-list{display:flex;flex-direction:column;gap:8px}.side-list button{border:1px solid transparent;border-radius:12px;background:#f6f3ed;padding:12px;text-align:left;cursor:pointer;color:var(--ink);font-weight:700;transition:.18s}.side-list button:hover{background:#edf3f5}.side-list button.active{background:#ffebeb;color:#b51f2d;border-color:#ffd0d2;box-shadow:inset 3px 0 var(--red)}
+.lesson-content h2{margin:10px 0;font-size:clamp(1.65rem,3vw,2.2rem);letter-spacing:-.04em}.lesson-content p{line-height:1.8;color:#40576a;font-size:1rem}.fact{margin-top:18px;padding:17px;border-radius:15px;background:linear-gradient(135deg,#edf8f0,#f8fcf8);border:1px solid #d7ecdd;border-left:4px solid var(--green);line-height:1.65}.lesson-image{width:100%;max-height:320px;object-fit:cover;border-radius:17px;margin:12px 0 4px;background:#e9e4db}.tag{display:inline-flex;align-items:center;gap:6px;background:#e8f0f5;color:#234e69;border-radius:999px;padding:7px 11px;font-size:.78rem;font-weight:900;letter-spacing:.02em}
+.quiz-question{font-size:1.22rem;font-weight:850;line-height:1.55}.answers{display:grid;gap:11px;margin:20px 0}.answer{border:1px solid #e6e4df;background:white;text-align:left;border-radius:14px;padding:14px 15px;cursor:pointer;font-weight:700;color:var(--ink);transition:.18s}.answer:hover{border-color:#9ab5c5;transform:translateX(2px);background:#fbfdfe}.answer.correct{background:#e8f7ed;border-color:#73bd8c;color:#1c6940}.answer.wrong{background:#fff0ed;border-color:#e88b7c;color:#a52c20}.feedback{padding:15px;border-radius:14px;background:#f1f6f9;line-height:1.65;margin:12px 0;border:1px solid #e1ebf0}.progress{height:9px;background:#e8edf0;border-radius:99px;overflow:hidden;margin:16px 0 22px}.progress div{height:100%;background:linear-gradient(90deg,var(--red),#ff9b72);width:0;transition:width .3s;border-radius:99px}
+.two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.field{width:100%;padding:14px 15px;border:1px solid #d9e0e5;border-radius:13px;font:inherit;margin:8px 0 13px;background:#fff}.field:focus{outline:3px solid #dcecf4;border-color:#6b9bb5}.chat-log{min-height:140px;max-height:310px;overflow:auto;background:#f6f8f8;border-radius:16px;padding:13px;margin:14px 0;border:1px solid #edf0ef}.bubble{padding:12px 14px;border-radius:15px;margin:9px 0;line-height:1.6;white-space:pre-wrap}.bubble.bot{background:white;border:1px solid var(--line);margin-right:12%;box-shadow:0 3px 8px #18324708}.bubble.user{background:#e4f0f7;margin-left:12%;border:1px solid #d6e7f0}.note{font-size:.86rem;color:var(--muted);line-height:1.65}.stat-row{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.stat{background:linear-gradient(135deg,#f3f7f8,#fff);padding:13px 17px;border-radius:15px;min-width:125px;border:1px solid #e7edf0}.stat strong{display:block;font-size:1.45rem;letter-spacing:-.03em}.stat span{font-size:.8rem;color:var(--muted)}
+.footer{background:linear-gradient(110deg,#102c42,#174660);color:#e6eff4;padding:27px 20px;text-align:center;font-size:.9rem;line-height:1.7}.footer:before{content:"✦  ✦  ✦";display:block;color:#ffd166;letter-spacing:.5em;margin-bottom:8px}
+.ai-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
+.ai-card{background:linear-gradient(145deg,#fff,#f8fbfc);border:1px solid #e1e8eb;border-radius:19px;padding:20px;box-shadow:0 6px 18px #15344a08}
+.ai-card .ai-icon{font-size:1.8rem;width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:#edf4f7;margin-bottom:12px}
+.ai-card h3{margin:0 0 8px}.ai-card p{color:#52697a;line-height:1.6;font-size:.93rem}
+.ai-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
+.ai-actions button,.ai-actions input{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer;font-size:.85rem}
+.ai-link{background:#12324a;color:white}.ai-copy{background:#e8f0f5;color:#12324a}
+.status-note{padding:15px;border-radius:14px;background:#fff5df;border:1px solid #f0dfb8;color:#6f5318;line-height:1.6}
+.output-result{margin-top:10px;padding:12px;background:#fff;border:1px solid #d9e0e5;border-radius:12px;font-size:.9rem;line-height:1.6;max-height:220px;overflow-y:auto}
+.generated-img{width:100%;max-height:260px;object-fit:cover;border-radius:12px;margin-top:10px;box-shadow:0 4px 12px rgba(0,0,0,0.15)}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.lesson-layout{grid-template-columns:1fr}.side-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.two-col{grid-template-columns:1fr}header{align-items:flex-start;flex-direction:column}nav{justify-content:flex-start}}
+@media(max-width:600px){main{padding:18px 12px 38px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.module{padding:14px 12px;min-height:180px}.module .module-photo{height:110px}.module .module-body{padding:12px 12px 0}.hero{min-height:440px;border-radius:22px;padding:25px 21px}.hero h1{font-size:2.55rem}.section-head{align-items:flex-start;flex-direction:column;margin:30px 0 15px}.side-list{grid-template-columns:1fr 1fr}header{padding:12px 14px}nav button{padding:9px 11px}.panel{border-radius:18px}.ai-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">🇵🇪 Perú<span>IA</span><small>Descubriendo el Perú, Física y Matemáticas</small></div>
+  <nav>
+    <button class="active" data-page="home" onclick="showPage('home')">Inicio</button>
+    <button data-page="modules" onclick="showPage('modules')">Módulos</button>
+    <button data-page="quiz" onclick="showPage('quiz')">Quiz</button>
+    <button data-page="tutor" onclick="showPage('tutor')">Tutor IA</button>
+    <button data-page="lab" onclick="showPage('lab')">Laboratorio IA</button>
+    <button data-page="qr" onclick="showPage('qr')">📱 Código QR</button>
+    <button data-page="config" onclick="showPage('config')">⚙️ Configurar API Key</button>
+    <button data-page="about" onclick="showPage('about')">Acerca de</button>
+  </nav>
+</header>
+<main>
+<section id="home" class="page">
+  <div class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Una aventura para aprender con IA propia</div>
+      <h1>¡Conoce, aprende y resuelve con inteligencia artificial!</h1>
+      <p>Explora la historia, geografía, cultura, gastronomía y biodiversidad del Perú, o resuelve problemas avanzados de física y matemáticas impulsado por Gemini.</p>
+      <button class="primary" onclick="showPage('modules')">Comenzar a explorar →</button>
+    </div>
+  </div>
+  <div class="section-head"><div><h2>Tu viaje empieza aquí</h2><p>Elige un tema y descubre algo nuevo del Perú.</p></div></div>
+  <div class="grid" id="homeCards"></div>
+</section>
+
+<section id="modules" class="page hidden">
+  <button class="crumb" onclick="showPage('home')">← Volver al inicio</button>
+  <div class="section-head"><div><h2>Nuestros módulos</h2><p>Selecciona una categoría para comenzar.</p></div></div>
+  <div class="grid" id="moduleCards"></div>
+</section>
+
+<section id="lesson" class="page hidden">
+  <button class="crumb" onclick="showPage('modules')">← Volver a módulos</button>
+  <div class="panel lesson-layout">
+    <aside class="side-list" id="lessonNav"></aside>
+    <article class="lesson-content" id="lessonContent"></article>
+  </div>
+</section>
+
+<section id="quiz" class="page hidden">
+  <button class="crumb" onclick="resetQuiz();showPage('home')">← Volver al inicio</button>
+  <div class="panel" style="max-width:780px;margin:auto">
+    <span class="tag">Reto de conocimientos</span>
+    <h2>🧠 Quiz PerúIA</h2><p class="note">Pon a prueba lo que sabes. Lee cada pregunta y elige una respuesta.</p>
+    <div class="stat-row"><div class="stat"><strong id="qCount">1 / 10</strong><span>Pregunta</span></div><div class="stat"><strong id="qScore">0</strong><span>Puntos</span></div></div>
+    <div class="progress"><div id="qProgress"></div></div>
+    <div id="quizArea"></div>
+  </div>
+</section>
+
+<section id="tutor" class="page hidden">
+  <button class="crumb" onclick="showPage('home')">← Volver al inicio</button>
+  <div class="section-head"><div><h2>🤖 Tutor IA Multidisciplinario</h2><p>Pregúntale sobre historia del Perú (con respuestas breves de 100 a 150 palabras y su toque criollo), o mándale ejercicios de física y matemáticas con procedimiento completo.</p></div></div>
+  <div class="panel" style="margin-bottom:18px">
+    <label for="tutorModule"><strong>¿Qué deseas consultar?</strong></label>
+    <select id="tutorModule" class="field" onchange="changeTutorModule()">
+      <option value="historia">🏺 Historia y Cultura del Perú</option>
+      <option value="matematica">📐 Matemáticas y Razonamiento</option>
+      <option value="fisica">⚡ Física (MRU, MRUV, etc.)</option>
+    </select>
+    <p class="note" id="tutorDescription">Tutor especializado listo para responderte en vivo mediante Google AI Studio.</p>
+  </div>
+  <div class="two-col">
+    <div class="panel">
+      <div class="chat-log" id="chatLog">
+        <div class="bubble bot">¡Habla, causa! Soy tu tutor inteligente de PerúIA. Pregúntame sobre el Perú o mándame tu problema matemático o de física. ¡Aquí estoy, chochera!</div>
+      </div>
+      <form id="chatForm" onsubmit="enviarMensajeTutor(event)">
+        <label for="chatInput"><strong>Tu pregunta o ejercicio:</strong></label>
+        <input id="chatInput" class="field" placeholder="Ej.: ¿Cómo medían el tiempo los incas? o Resuelve: d = v * t" required>
+        <button class="primary" id="askButton" type="submit" style="width:100%">Preguntar a la IA →</button>
+      </form>
+      <p class="note" style="margin-top:10px">💡 Asegúrate de configurar tu API Key de Google AI Studio en el menú superior.</p>
+    </div>
+    <div class="panel">
+      <h3>💡 Preguntas y ejercicios rápidos</h3>
+      <p class="note">Haz clic para probar consultas inmediatas:</p>
+      <div id="preparedQuestions"></div>
+    </div>
+  </div>
+</section>
+
+<section id="lab" class="page hidden">
+  <button class="crumb" onclick="showPage('home')">← Volver al inicio</button>
+  <div class="section-head"><div><span class="tag">Centro creativo independiente</span><h2 style="margin-top:10px">🤖 Laboratorio IA con Google AI Studio</h2><p>Herramientas creativas y de programación totalmente funcionales conectadas directamente a Gemini.</p></div></div>
+  <div class="status-note"><strong>Independencia total:</strong> Configura tu API Key en la sección superior para que estas herramientas operen con modelos de Google sin depender de servicios externos.</div>
+  <div class="ai-grid">
+    <article class="ai-card">
+      <div class="ai-icon">🧠</div><h3>1. Generador de Textos IA</h3>
+      <p>Crea explicaciones detalladas y resúmenes educativos al instante.</p>
+      <textarea id="textPromptInput" class="field" rows="2" placeholder="Escribe tu tema (ej: El Tahuantinsuyo)..."></textarea>
+      <button class="ai-link" onclick="generarTextoLab()">Generar Texto con IA 🚀</button>
+      <div id="textOutput" class="output-result hidden"></div>
+    </article>
+    <article class="ai-card">
+      <div class="ai-icon">🎨</div><h3>2. Generador Real de Imágenes IA</h3>
+      <p>Genera imágenes visuales automáticas basadas en inteligencia artificial.</p>
+      <input id="imagePromptInput" class="field" placeholder="Describe la imagen (ej: Machu Picchu al atardecer)...">
+      <button class="ai-link" onclick="generarImagenLab()">Generar Imagen Real 🎨</button>
+      <div id="imageOutput" class="output-result hidden"></div>
+    </article>
+    <article class="ai-card">
+      <div class="ai-icon">💻</div><h3>3. IA de Programación y Código</h3>
+      <p>Genera fragmentos de código, scripts o resuelve dudas de desarrollo web y software.</p>
+      <textarea id="codePromptInput" class="field" rows="2" placeholder="Ej: Crea una función en JavaScript para calcular la velocidad..."></textarea>
+      <button class="ai-link" onclick="generarCodigoLab()">Generar Código 💻</button>
+      <div id="codeOutput" class="output-result hidden"></div>
+    </article>
+    <article class="ai-card">
+      <div class="ai-icon">🎙️</div><h3>4. Narrador de Voz IA</h3>
+      <p>Convierte cualquier texto en voz hablada usando los sintetizadores de tu dispositivo.</p>
+      <textarea id="voiceText" class="field" rows="3">¡Bienvenidos a PerúIA! Aprendiendo física, matemáticas y nuestra gran cultura.</textarea>
+      <div class="ai-actions"><button class="ai-link" onclick="speakText()">▶ Escuchar</button><button class="ai-copy" onclick="stopSpeech()">■ Detener</button></div>
+    </article>
+  </div>
+</section>
+
+<!-- SECCIÓN: Código QR Funcional Garantizado -->
+<section id="qr" class="page hidden">
+  <button class="crumb" onclick="showPage('home')">← Volver al inicio</button>
+  <div class="panel" style="max-width:620px;margin:auto;text-align:center">
+    <span class="tag">Acceso Móvil Multiplataforma</span>
+    <h2 style="margin-top:10px">📱 Código QR de PerúIA</h2>
+    <p class="note">Escanea este código con la cámara de tu celular (Android o iPhone). Si compartes tu archivo HTML en una plataforma gratuita (como GitHub Pages o Netlify), puedes pegar el enlace aquí abajo para que el QR abra exactamente tu sitio web publicado.</p>
+    
+    <!-- Contenedor donde se dibuja el código QR local de forma infalible -->
+    <div id="qrcodeContainer" style="display:flex;justify-content:center;align-items:center;margin:20px auto;background:white;padding:20px;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid var(--line);min-height:240px;"></div>
+    
+    <div style="margin:15px 0;">
+      <label for="qrUrlInput"><strong>Enlace o dirección web de tu app:</strong></label>
+      <input id="qrUrlInput" class="field" style="text-align:center" placeholder="https://tudominio.com" oninput="generarQRDinamico()">
+    </div>
+
+    <button class="primary" onclick="window.print()" style="margin-top:10px">🖨️ Imprimir / Guardar QR</button>
+  </div>
+</section>
+
+<section id="config" class="page hidden">
+  <button class="crumb" onclick="showPage('home')">← Volver al inicio</button>
+  <div class="panel" style="max-width:580px;margin:auto">
+    <span class="tag">Configuración del sistema</span>
+    <h2>⚙️ Configurar API Key de Google AI Studio</h2>
+    <p class="note">Introduce tu clave de <strong>Google AI Studio</strong> para habilitar todas las funciones inteligentes directamente en tu dispositivo, sin intermediarios.</p>
+    <label for="apiKeyInput"><strong>API Key de Google Gemini:</strong></label>
+    <input id="apiKeyInput" type="password" class="field" placeholder="AIzaSy...">
+    <button class="primary" onclick="guardarApiKey()" style="width:100%">Guardar Clave en el Dispositivo 💾</button>
+    <div id="configStatus" class="fact" style="margin-top:15px;display:none"></div>
+  </div>
+</section>
+
+<section id="about" class="page hidden">
+  <button class="crumb" onclick="showPage('home')">← Volver al inicio</button>
+  <div class="panel">
+    <span class="tag">Sobre el proyecto</span><h2>Acerca de PerúIA</h2>
+    <p>PerúIA es una aplicación educativa multiplataforma independiente que combina el estudio del patrimonio cultural del Perú con herramientas avanzadas de matemáticas, física, programación y laboratorios de inteligencia artificial integrados mediante Google AI Studio.</p>
+  </div>
+</section>
+</main>
+<footer class="footer">🇵🇪 PerúIA · Aplicación interactiva multiplataforma con IA independiente.</footer>
+
+<script>
+const modules = [
+ {id:'historia',icon:'🏺',name:'Historia',image:'https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=900&q=85',color:'#ffe2dc',desc:'Culturas y acontecimientos que marcaron nuestro pasado.',topics:[
+  {name:'Culturas preincas',title:'Culturas del Perú antiguo',text:'Antes del Imperio inca, en el territorio peruano florecieron sociedades como Caral, Chavín, Paracas, Nazca, Moche y Chimú. Desarrollaron conocimientos de agricultura, arquitectura, cerámica, textiles e irrigación.',fact:'La cultura Caral es conocida por sus antiguos centros urbanos y su importancia para el estudio de las primeras civilizaciones de América.'},
+  {name:'Imperio inca',title:'El Imperio inca',text:'Los incas construyeron un gran Estado andino conocido como Tahuantinsuyo. Su centro político fue Cusco y conectaron amplios territorios mediante caminos, centros administrativos y sistemas de organización agrícola.',fact:'El Qhapaq Ñan fue una extensa red vial andina que conectó distintos territorios del Imperio.'},
+  {name:'Conquista',title:'La conquista española',text:'En el siglo XVI comenzó la conquista española del territorio gobernado por los incas. Este proceso transformó profundamente la sociedad, la política, la economía y las creencias.',fact:'La historia de la conquista se comprende mejor considerando distintas fuentes y perspectivas.'},
+  {name:'Independencia',title:'La independencia del Perú',text:'El proceso de independencia incluyó campañas militares, movimientos y participación de diversos sectores de la población. La proclamación de José de San Martín ocurrió en Lima el 28 de julio de 1821.',fact:'La consolidación de la independencia continuó con campañas posteriores, incluida la batalla de Ayacucho en 1824.'},
+  {name:'Perú republicano',title:'El Perú republicano',text:'Desde la independencia, el Perú ha vivido cambios políticos, económicos y sociales. Su historia republicana incluye desafíos de construcción del Estado y diversidad cultural.',fact:'Conocer la historia ayuda a comprender los retos del presente y valorar las contribuciones comunitarias.'}]},
+ {id:'geografia',icon:'🗺️',name:'Geografía',image:'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85',color:'#dceeff',desc:'Regiones, climas, paisajes, ríos y montañas.',topics:[
+  {name:'Costa',title:'La Costa',text:'La costa peruana es una franja junto al océano Pacífico. Tiene zonas áridas, valles fértiles formados por ríos y ciudades importantes. El mar influye en su clima y economía.',fact:'Aunque gran parte de la costa es desértica, los valles fluviales permiten una agricultura importante.'},
+  {name:'Sierra',title:'La Sierra',text:'La Sierra está dominada por la cordillera de los Andes. Presenta montañas, valles, mesetas y una variedad de climas según la altitud.',fact:'La altitud influye en la temperatura, la vegetación y las actividades que se pueden desarrollar.'},
+  {name:'Selva',title:'La Selva',text:'La Amazonía peruana posee bosques tropicales, ríos caudalosos y una gran variedad de especies. Es esencial para la biodiversidad y alberga comunidades tradicionales.',fact:'Los ríos amazónicos son vías de transporte y forman parte de ecosistemas fundamentales.'},
+  {name:'Regiones naturales',title:'Diversidad de regiones',text:'El Perú tiene una gran variedad de paisajes debido a la cordillera de los Andes y otros factores geográficos.',fact:'La diversidad geográfica contribuye a la variedad de alimentos y costumbres del país.'},
+  {name:'Ríos y montañas',title:'Ríos y montañas del Perú',text:'Los Andes son la fuente de numerosos ríos que desembocan en el Pacífico, el Atlántico o el Titicaca.',fact:'El agua de las montañas es indispensable para el consumo y la agricultura.'}]},
+ {id:'cultura',icon:'🎭',name:'Cultura',image:'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=85',color:'#fff0c7',desc:'Danzas, música, festividades y tradiciones.',topics:[
+  {name:'Danzas',title:'Danzas tradicionales',text:'Las danzas peruanas expresan historias e identidades regionales como la marinera, el festejo y la danza de tijeras.',fact:'La marinera destaca por el pañuelo, el ritmo y la elegancia de sus movimientos.'},
+  {name:'Música',title:'Música peruana',text:'Combina tradiciones andinas, amazónicas, afroperuanas y criollas utilizando quenas, cajón, guitarras y zampoñas.',fact:'El cajón peruano es un instrumento emblemático de la música afroperuana.'},
+  {name:'Festividades',title:'Fiestas y celebraciones',text:'Reúnen música, danzas, gastronomía, fe y memoria comunitaria combinando tradiciones indígenas e hispanas.',fact:'Las fiestas fortalecen la identidad de las comunidades.'},
+  {name:'Artesanía',title:'Arte y artesanía',text:'Los artesanos trabajan textiles, cerámica, madera y metales con técnicas heredadas.',fact:'Los diseños textiles transmiten símbolos y conocimientos locales.'},
+  {name:'Tradiciones',title:'Tradiciones vivas',text:'Incluyen relatos oralidad, lenguas, conocimientos agrícolas y prácticas comunitarias.',fact:'Valorar una tradición significa reconocer a las comunidades que la mantienen viva.'}]},
+ {id:'gastronomia',icon:'🍲',name:'Gastronomía',image:'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85',color:'#f5dff2',desc:'Sabores e ingredientes que identifican al Perú.',topics:[
+  {name:'Ceviche',title:'Ceviche peruano',text:'Patrimonio cultural preparado con pescado, limón, cebolla, ají y cilantro, acompañado de camote y choclo.',fact:'La gastronomía peruana refleja la diversidad de ingredientes y regiones.'},
+  {name:'Lomo saltado',title:'Lomo saltado',text:'Combina trozos de carne salteados con cebolla, tomate y ají, servido con papas fritas y arroz.',fact:'Refleja el encuentro entre la tradición criolla y oriental.'},
+  {name:'Pachamanca',title:'Pachamanca',text:'Preparación tradicional andina cocinada con piedras calientes bajo tierra con carnes, papas y hierbas.',fact:'Su preparación reúne a familias y comunidades.'},
+  {name:'Juane',title:'Juane amazónico',text:'Plato tradicional de la Amazonía elaborado con arroz, gallina y especias envuelto en hojas.',fact:'Las hojas utilizadas aportan aroma y conectan la cocina con el entorno.'},
+  {name:'Anticuchos',title:'Anticuchos',text:'Brochetas de corazón de res marinadas en ajíes y especias, cocinadas a la parrilla.',fact:'La comida callejera forma parte de la vida cotidiana urbana.'}]},
+ {id:'biodiversidad',icon:'🦙',name:'Biodiversidad',image:'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=85',color:'#dff3df',desc:'Animales, plantas y ecosistemas únicos.',topics:[
+  {name:'Llama',title:'La llama',text:'Camélido sudamericano domesticado en los Andes, utilizado como animal de carga y por su fibra.',fact:'Han sido fundamentales para la vida y economía andina.'},
+  {name:'Vicuña',title:'La vicuña',text:'Camélido silvestre conocido por producir una de las fibras más finas del mundo.',fact:'Su conservación combina protección de hábitats y esquila regulada.'},
+  {name:'Cóndor andino',title:'El cóndor andino',text:'Una de las aves voladoras más grandes del mundo, habitante de zonas montañosas.',fact:'Cumple un rol ecológico esencial como carroñero.'},
+  {name:'Gallito de las rocas',title:'Gallito de las rocas',text:'Ave emblemática de los bosques húmedos andinos con plumaje naranja intenso.',fact:'Ayuda a la dispersión de semillas en los bosques.'},
+  {name:'Amazonía peruana',title:'La Amazonía peruana',text:'Alberga una enorme variedad de especies y es hogar de numerosos pueblos indígenas.',fact:'Cuidar la biodiversidad implica proteger los hábitats naturales.'}]}
+];
+
+const quiz = [
+ {q:'¿Cuál fue el principal centro político del Imperio inca?',a:['Lima','Cusco','Trujillo','Arequipa'],correct:1,why:'Cusco fue el centro político y cultural del Imperio inca.'},
+ {q:'¿Qué océano baña la costa peruana?',a:['Atlántico','Índico','Pacífico','Ártico'],correct:2,why:'La costa peruana se extiende junto al océano Pacífico.'},
+ {q:'¿Qué cordillera atraviesa el Perú?',a:['Los Alpes','Los Andes','El Himalaya','Los Urales'],correct:1,why:'La cordillera de los Andes recorre el territorio peruano.'},
+ {q:'¿Cuál es una danza tradicional peruana?',a:['Flamenco','Marinera','Samba brasileña','Tango argentino'],correct:1,why:'La marinera es una danza tradicional peruana.'},
+ {q:'¿Cuál de estos platos se asocia especialmente con la Amazonía peruana?',a:['Juane','Paella','Tacos','Sushi'],correct:0,why:'El juane es un plato tradicional de la Amazonía peruana.'},
+ {q:'¿Qué animal es un camélido silvestre andino?',a:['Vicuña','Jaguar','Delfín rosado','Pingüino'],correct:0,why:'La vicuña vive en zonas altoandinas y es un camélido silvestre.'},
+ {q:'¿Qué civilización construyó Machu Picchu?',a:['Moche','Inca','Nazca','Chimú'],correct:1,why:'Machu Picchu es un sitio arqueológico asociado a la civilización inca.'},
+ {q:'¿Qué instrumento es emblemático de la música afroperuana?',a:['Cajón peruano','Gaita escocesa','Sitar','Banjo'],correct:0,why:'El cajón peruano tiene un papel destacado en la música afroperuana.'},
+ {q:'¿Por qué es importante la biodiversidad?',a:['Solo sirve para decorar','Mantiene el equilibrio de los ecosistemas','Impide que llueva','Hace innecesarios los bosques'],correct:1,why:'La biodiversidad sostiene los ecosistemas y ofrece recursos esenciales.'},
+ {q:'¿En qué fecha se proclamó la independencia del Perú en Lima?',a:['28 de julio de 1821','9 de diciembre de 1824','1 de enero de 1900','7 de junio de 1880'],correct:0,why:'José de San Martín proclamó la independencia en Lima el 28 de julio de 1821.'}
+];
+
+let currentModule='historia', currentTopic=0, qi=0, score=0, answered=false;
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
+  const target = document.getElementById(id);
+  if(target) target.classList.remove('hidden');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active', b.dataset.page===id || (id==='lesson'&&b.dataset.page==='modules')));
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='quiz') renderQuiz();
+  if(id==='qr') generarQRDinamico();
+}
+
+function makeCards(target){
+  const el = document.getElementById(target);
+  if(el) {
+    el.innerHTML=modules.map(m=>`<button class="module" onclick="openModule('${m.id}')"><img class="module-photo" src="${m.image}" alt="Imagen de ${m.name}" loading="lazy" onerror="this.style.display='none'"><div class="module-body"><div class="emoji">${m.icon}</div><h3>${m.name}</h3><p>${m.desc}</p><span class="arrow">Explorar →</span></div></button>`).join('');
+  }
+}
+
+function openModule(id){ currentModule=id; currentTopic=0; renderLesson(); showPage('lesson'); }
+
+function renderLesson(){
+  const m=modules.find(x=>x.id===currentModule);
+  if(!m) return;
+  const nav = document.getElementById('lessonNav');
+  if(nav) {
+    nav.innerHTML=m.topics.map((t,i)=>`<button class="${i===currentTopic?'active':''}" onclick="currentTopic=${i};renderLesson()">${t.name}</button>`).join('')+`<button onclick="showPage('quiz')">🧠 Ir al quiz</button>`;
+  }
+  const t=m.topics[currentTopic];
+  const content = document.getElementById('lessonContent');
+  if(content && t) {
+    content.innerHTML=`<span class="tag">${m.icon} ${m.name}</span><h2>${t.title}</h2><img class="lesson-image" src="${m.image}" alt="Imagen de ${m.name}" loading="lazy" onerror="this.style.display='none'"><p>${t.text}</p><div class="fact"><strong>💡 Dato para recordar</strong><br>${t.fact}</div><button class="primary" onclick="nextTopic()" style="margin-top:20px">Siguiente tema →</button>`;
+  }
+}
+
+function nextTopic(){
+  const m=modules.find(x=>x.id===currentModule);
+  if(m && currentTopic<m.topics.length-1){currentTopic++;renderLesson()}else{showPage('quiz')}
+}
+
+function resetQuiz(){ qi=0; score=0; answered=false; renderQuiz(); }
+
+function renderQuiz(){
+  const area=document.getElementById('quizArea');
+  if(!area) return;
+  if(qi>=quiz.length){
+    area.innerHTML=`<div style="text-align:center;padding:25px 5px"><div style="font-size:3.5rem">🏆</div><h2>¡Reto completado!</h2><p>Obtuviste <strong>${score} de ${quiz.length}</strong> respuestas correctas.</p><button class="primary" onclick="resetQuiz()">Volver a intentar</button></div>`;
+    const count = document.getElementById('qCount'); if(count) count.textContent='10 / 10';
+    const sc = document.getElementById('qScore'); if(sc) sc.textContent=score;
+    const prog = document.getElementById('qProgress'); if(prog) prog.style.width='100%';
+    return;
+  }
+  const q=quiz[qi]; answered=false;
+  const count = document.getElementById('qCount'); if(count) count.textContent=`${qi+1} / ${quiz.length}`;
+  const sc = document.getElementById('qScore'); if(sc) sc.textContent=score;
+  const prog = document.getElementById('qProgress'); if(prog) prog.style.width=`${qi/quiz.length*100}%`;
+  area.innerHTML=`<div class="quiz-question">${qi+1}. ${q.q}</div><div class="answers">${q.a.map((a,i)=>`<button class="answer" onclick="answerQuiz(${i})">${String.fromCharCode(65+i)})${a}</button>`).join('')}</div><div id="quizFeedback"></div><button id="nextQuestion" class="primary hidden" onclick="qi++;renderQuiz()" style="margin-top:10px">Siguiente pregunta →</button>`;
+}
+
+function answerQuiz(i){
+  if(answered) return; answered=true;
+  const q=quiz[qi]; const buttons=document.querySelectorAll('#quizArea .answer');
+  if(buttons[q.correct]) buttons[q.correct].classList.add('correct');
+  if(i===q.correct) score++; else if(buttons[i]) buttons[i].classList.add('wrong');
+  const sc = document.getElementById('qScore'); if(sc) sc.textContent=score;
+  const fb = document.getElementById('quizFeedback');
+  if(fb) fb.innerHTML=`<div class="feedback"><strong>${i===q.correct?'✅ ¡Correcto!':'💡 Vamos a aprender'}</strong><br>${q.why}</div>`;
+  const nextQ = document.getElementById('nextQuestion');
+  if(nextQ) nextQ.classList.remove('hidden');
+}
+
+const tutorTopics = {
+ historia: {label:"Historia y Cultura del Perú", desc:"Pregunta sobre culturas antiguas, los incas, la conquista o la independencia.", questions:["¿Quiénes fueron los incas y cómo organizaron su imperio?","¿Cómo medían el tiempo los antiguos peruanos e incas?","¿Por qué fue importante la independencia del Perú?"]},
+ matematica: {label:"Matemáticas", desc:"Resuelve problemas algebraicos, trigonometría o razonamiento con procedimiento completo.", questions:["Resuelve la ecuación: 3x + 12 = 30","Calcula el área de un triángulo con base 10 y altura 6"]},
+ fisica: {label:"Física", desc:"Resuelve problemas de MRU, MRUV, velocidad y distancia paso a paso.", questions:["Un auto en MRU viaja a 20 m/s por 5s. Halla la distancia.", "Un móvil parte con MRV a 10 m/s y acelera a 2 m/s² por 4s. Halla su distancia."]}
+};
+
+function changeTutorModule(){
+  const select = document.getElementById('tutorModule');
+  if(!select) return;
+  const id=select.value, info=tutorTopics[id];
+  const desc = document.getElementById('tutorDescription');
+  if(desc) desc.textContent='Tutor de '+info.label+': '+info.desc;
+  const prep = document.getElementById('preparedQuestions');
+  if(prep) prep.innerHTML=info.questions.map(q=>`<button class="answer" style="width:100%;text-align:left;margin:5px 0" onclick='askPrepared(${JSON.stringify(q)})'>${q}</button>`).join('');
+  const log = document.getElementById('chatLog');
+  if(log) log.innerHTML=`<div class="bubble bot">¡Habla, causa! Soy tu tutor especializado en ${info.label}. Hazme una consulta o elige una pregunta rápida.</div>`;
+}
+
+function setPrompt(s){ const input = document.getElementById('chatInput'); if(input){ input.value=s; input.focus(); } }
+function askPrepared(q){ setPrompt(q); const form = document.getElementById('chatForm'); if(form) form.requestSubmit(); }
+function addBubble(text,kind){
+  const log=document.getElementById('chatLog');
+  if(!log) return null;
+  const el=document.createElement('div');
+  el.className='bubble '+kind;
+  el.textContent=text;
+  log.appendChild(el); log.scrollTop=log.scrollHeight;
+  return el;
+}
+
+async function llamarGeminiAPI(promptText) {
+  const rawKey = localStorage.getItem('peru_gemini_key');
+  if(!rawKey || rawKey.trim() === '') {
+    throw new Error('API Key no configurada. Ve al menú superior en "⚙️ Configurar API Key" e ingresa tu clave.');
+  }
+
+  const cleanKey = rawKey.trim().replace(/[^\x00-\xFF]/g, "");
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${cleanKey}`;
+  
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: promptText }] }],
+      generationConfig: { temperature: 0.6, maxOutputTokens: 800 }
+    })
+  });
+
+  const data = await response.json();
+  if(!response.ok) {
+    throw new Error(data.error?.message || `Error HTTP ${response.status}`);
+  }
+
+  if(data.candidates && data.candidates[0].content?.parts?.[0]?.text) {
+    return data.candidates[0].content.parts[0].text;
+  } else {
+    throw new Error('La IA respondió pero el formato de salida no es válido.');
+  }
+}
+
+async function enviarMensajeTutor(e){
+  e.preventDefault();
+  const input=document.getElementById('chatInput');
+  if(!input) return;
+  const question=input.value.trim();
+  if(!question) return;
+  const moduleId=document.getElementById('tutorModule').value;
+  addBubble(question,'user'); input.value='';
+  
+  const pending=addBubble('Procesando al toque... ⏳','bot');
+  const button=document.getElementById('askButton'); if(button) button.disabled=true;
+  
+  try {
+    let systemPrompt = "";
+    if(moduleId === 'matematica' || moduleId === 'fisica') {
+      systemPrompt = `Actúa como un profesor experto en ciencias exactas (matemáticas o física) con jerga peruana moderada (mano, chochera, causa). Resuelve el siguiente ejercicio paso a paso de forma clara, directa, con todo el procedimiento matemático completo y ordenado: "${question}"`;
+    } else {
+      systemPrompt = `Actúa como un experto en la historia, geografía y cultura del Perú con jerga peruana moderada (mano, chochera, causa). Responde de forma precisa manteniendo una extensión estricta de 100 a 150 palabras, enfocándote exclusivamente en el Perú sin mezclar con física ni matemáticas. Pregunta: "${question}"`;
+    }
+
+    const respuestaTexto = await llamarGeminiAPI(systemPrompt);
+    if(pending) pending.textContent = respuestaTexto;
+  } catch(err) {
+    if(pending) pending.textContent = '⚠️ Error en la API: ' + err.message;
+  }
+  if(button) button.disabled=false;
+}
+
+async function generarTextoLab(){
+  const prompt = document.getElementById('textPromptInput').value.trim();
+  const out = document.getElementById('textOutput');
+  if(!prompt){ alert('Escribe un tema.'); return; }
+  
+  out.classList.remove('hidden'); out.textContent = 'Generando texto con Gemini... ⏳';
+  try {
+    const textoGenerado = await llamarGeminiAPI(`Genera una explicación educativa clara y detallada sobre: ${prompt}`);
+    out.textContent = textoGenerado;
+  } catch(e) {
+    out.textContent = '⚠️ Error: ' + e.message;
+  }
+}
+
+async function generarImagenLab(){
+  const prompt = document.getElementById('imagePromptInput').value.trim();
+  const out = document.getElementById('imageOutput');
+  if(!prompt){ alert('Describe la imagen.'); return; }
+  
+  out.classList.remove('hidden'); out.textContent = 'Generando imagen real por IA... ⏳';
+  try {
+    const encodedPrompt = encodeURIComponent(prompt + ", highly detailed, 4k resolution, digital art");
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=500&nologo=true`;
+    
+    out.innerHTML = `<strong>Imagen generada por IA:</strong><br><img src="${imageUrl}" alt="${prompt}" class="generated-img" onerror="this.onerror=null; this.src=''; this.parentNode.innerHTML='Error al cargar la imagen generada.';">`;
+  } catch(e) {
+    out.textContent = '⚠️ Error al generar la imagen: ' + e.message;
+  }
+}
+
+async function generarCodigoLab(){
+  const prompt = document.getElementById('codePromptInput').value.trim();
+  const out = document.getElementById('codeOutput');
+  if(!prompt){ alert('Escribe lo que deseas programar.'); return; }
+  
+  out.classList.remove('hidden'); out.textContent = 'Generando código con IA... ⏳';
+  try {
+    const codigoGenerado = await llamarGeminiAPI(`Actúa como programador experto. Escribe el código limpio, funcional y comentado para la siguiente solicitud: ${prompt}`);
+    out.textContent = codigoGenerado;
+  } catch(e) {
+    out.textContent = '⚠️ Error: ' + e.message;
+  }
+}
+
+function guardarApiKey(){
+  const keyInput = document.getElementById('apiKeyInput');
+  if(!keyInput) return;
+  const key = keyInput.value.trim();
+  if(!key){ alert('Introduce una clave válida.'); return; }
+  localStorage.setItem('peru_gemini_key', key);
+  const status = document.getElementById('configStatus');
+  if(status) {
+    status.style.display = 'block';
+    status.innerHTML = '✅ <strong>¡API Key guardada con éxito en tu dispositivo!</strong> Ya puedes usar todas las funciones de IA de forma independiente.';
+  }
+}
+
+function speakText(){
+  if(!('speechSynthesis' in window)){ alert('Tu navegador no permite lectura de voz.'); return; }
+  window.speechSynthesis.cancel();
+  const voiceInput = document.getElementById('voiceText');
+  const textVal = voiceInput ? voiceInput.value : '';
+  const u = new SpeechSynthesisUtterance(textVal);
+  u.lang = 'es-PE'; u.rate = 0.94; window.speechSynthesis.speak(u);
+}
+function stopSpeech(){ if('speechSynthesis' in window) window.speechSynthesis.cancel(); }
+
+// Generador de QR dinámico y limpio usando la librería local QRCode.js
+function generarQRDinamico(){
+  const container = document.getElementById('qrcodeContainer');
+  const customInput = document.getElementById('qrUrlInput');
+  if(!container) return;
+  
+  container.innerHTML = ''; // Limpiar contenedor anterior
+  
+  let targetUrl = '';
+  if(customInput && customInput.value.trim() !== '') {
+    targetUrl = customInput.value.trim();
+  } else if(window.location.protocol.startsWith('http')) {
+    targetUrl = window.location.href;
+  } else {
+    targetUrl = 'https://peruia.netlify.app'; // Enlace por defecto para pruebas móviles
+  }
+  
+  try {
+    new QRCode(container, {
+      text: targetUrl,
+      width: 200,
+      height: 200,
+      colorDark : "#102c42",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.M
+    });
+  } catch(err) {
+    container.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(targetUrl)}" alt="Código QR" style="display:block;margin:auto;">`;
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  makeCards('homeCards');
+  makeCards('moduleCards');
+  resetQuiz();
+  changeTutorModule();
+
+  const urlInput = document.getElementById('qrUrlInput');
+  if(urlInput && window.location.protocol.startsWith('http')) {
+    urlInput.value = window.location.href;
+  }
+
+  const savedKey = localStorage.getItem('peru_gemini_key');
+  if(savedKey){ 
+    const input = document.getElementById('apiKeyInput'); 
+    if(input) input.value = savedKey; 
+  }
+});
+</script>
+</body>
+</html>
